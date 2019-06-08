@@ -8,7 +8,7 @@ using namespace std;
 int main() {
     int n;
 
-    for(int t = 1; t <= 1; t++) {
+    for(int t = 1; t <= 10; t++) {
       vector<string> pass;
       int op;
       scanf("%d",&n);
