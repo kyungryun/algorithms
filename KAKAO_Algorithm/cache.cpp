@@ -21,7 +21,7 @@ int main(){
       runtime = n*5;
       break;
     }else{
-      auto it = find(l.begin(),l.end(),cities[i]);
+      vector<int>::iterator it = find(l.begin(),l.end(),cities[i]);
       if(it != l.end()){
         runtime++;
       }else{
