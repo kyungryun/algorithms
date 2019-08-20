@@ -1,37 +1,55 @@
+#include <string>
 #include <iostream>
-#include <vector>
 #include <algorithm>
+#include <vector>
+#include <deque>
 using namespace std;
 
-int main(){
-  int cacheSize;
-  int n;
-  int cities[100001];
-
-  scanf("%d%d",&n,&cacheSize);
-
-  for(int i=0 ; i<n ; i++){
-    scanf("%d",&cities[i]);
-  }
-  int runtime = 0;
-  int s = 0;
-  vector<int> l;
-  for(int i=0 ; i<n ; i++){
-    if(cacheSize == 0){
-      runtime = n*5;
-      break;
-    }else{
-      vector<int>::iterator it = find(l.begin(),l.end(),cities[i]);
-      if(it != l.end()){
-        runtime++;
-      }else{
-        runtime+=5;
-        if(cacheSize == l.size()){
-          l.erase(l.begin());
+int solution(int cacheSize, vector<string> cities) {
+    int answer = 0;
+    int size = cities.size();
+    deque<string> lru;
+    int lruSize = 0;
+    for(int i=0 ; i<size ; i++){
+        if(cacheSize == 0){
+            answer = 5*size;
+            break;
+        }else{
+            int j=0;
+            while(cities[i][j] != '\0'){
+                if(cities[i][j] >= 'A' && cities[i][j] <= 'Z'){
+                    cities[i][j] += ('a'- 'A');
+                }
+                j++;
+            }
+            deque<string>::iterator iter;
+            iter = find(lru.begin(), lru.end(), cities[i]);
+            if(iter != lru.end()){
+                answer++;
+                string str = *iter;
+                lru.erase(iter);
+                lru.push_back(str);
+            }else{
+                answer+=5;
+                if(lruSize == cacheSize){
+                    lru.pop_front();
+                    lruSize--;
+                }
+                lru.push_back(cities[i]);
+                lruSize++;
+            }
         }
-        if(l.size() != cacheSize) l.insert(l.end(),cities[i]);
-      }
+
     }
-  }
-  printf("%d\n",runtime);
+    return answer;
+}
+int main(){
+    int c;
+    vector<string>v;
+    cin>>c;
+    v.push_back("a");
+    v.push_back("b");
+    v.push_back("C");
+    v.push_back("c");
+    cout<<solution(c, v)<<"\n";
 }
