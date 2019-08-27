@@ -2,7 +2,7 @@
 
 using namespace std;
 
-const int LIST_SIZE = 30000;
+const int LIST_SIZE = 3;
 
 struct NODE{
     int next;
@@ -66,7 +66,7 @@ struct MY_LIST{
         int prev = node[target].prev;
 
         pop_node_change(next, prev, target);
-        pos--;
+    //    pos--;
     }
     void pop_front(){
         int target = node[HEAD].next;
@@ -75,7 +75,7 @@ struct MY_LIST{
         int prev = node[target].prev;
 
         pop_node_change(next, prev, target);
-        pos--;
+    //    pos--;
     }
     void erase(int p){
         int target = node[HEAD].next;
@@ -84,7 +84,7 @@ struct MY_LIST{
         int next = node[target].next;
 
         pop_node_change(next, prev, target);
-        pos--;
+    //    pos--;
     }
     int front(){
         return node[node[HEAD].next].data;
@@ -106,7 +106,12 @@ int main(){
         scanf("%d",&t);
         list.push_back(t);
     }
-    printf("%d %d %d\n", list.front(), list.back(), list.size());
+    for(int i=0 ; i<n ; i++)list.pop_back();
+    for(int i=0 ; i<n ; i++){
+        int t;
+        scanf("%d",&t);
+        list.push_back(t);
+    }
     for(int i = list.node[list.HEAD].next ; i !=list.TAIL  ; i=list.node[i].next){
         printf("%d ",list.node[i].data);
     }
