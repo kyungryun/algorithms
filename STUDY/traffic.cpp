@@ -11,13 +11,11 @@ struct Log{
 };
 Log split(string str){
     Log log;
-    long long hour = ((str[0] - '0')*10 + (str[1] - '0'))*60*60*1000;
-    long long min = ((str[3] - '0')*10 + (str[4] - '0'))*60*1000;
-    long long sec = ((str[6] - '0')*10 + (str[7] - '0'))*1000;
-    sec += ((str[9]-'0')*100 + (str[10] - '0')*10 + str[11]-'0');
-    long long totalTime = hour+min+sec;
+    long long endTime = ((str[0] - '0')*10 + (str[1] - '0'))*60*60*1000;
+    endTime += ((str[3] - '0')*10 + (str[4] - '0'))*60*1000;
+    endTime += ((str[6] - '0')*10 + (str[7] - '0'))*1000;
+    endTime += ((str[9]-'0')*100 + (str[10] - '0')*10 + str[11]-'0');
     string t = str.substr(14);
-    int time = (str[13]-'0')*1000;
     int ms = 0;
     for(int i=0 ; i<t.size() ; i++){
         if(t[i] >= '0' && t[i] <= '9'){
@@ -25,9 +23,9 @@ Log split(string str){
             ms+=(t[i]-'0');
         }
     }
-    ms += time;
-    log.sTime = totalTime - ms + 1;
-    log.eTime = totalTime;
+    ms += (str[13]-'0')*1000;
+    log.sTime = endTime - ms + 1;
+    log.eTime = endTime;
     return log;
 }
 int solution(vector<string> lines) {
