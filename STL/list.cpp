@@ -2,7 +2,7 @@
 
 using namespace std;
 
-const int LIST_SIZE = 3;
+const int LIST_SIZE = 30000;
 
 struct NODE{
     int next;
@@ -34,6 +34,7 @@ struct MY_LIST{
     void pop_node_change(int next, int prev, int target){
         node[prev].next = next;
         node[next].prev = prev;
+        pos = target;
 
     }
     void push_back(int data){
@@ -66,7 +67,6 @@ struct MY_LIST{
         int prev = node[target].prev;
 
         pop_node_change(next, prev, target);
-    //    pos--;
     }
     void pop_front(){
         int target = node[HEAD].next;
@@ -75,7 +75,6 @@ struct MY_LIST{
         int prev = node[target].prev;
 
         pop_node_change(next, prev, target);
-    //    pos--;
     }
     void erase(int p){
         int target = node[HEAD].next;
@@ -84,7 +83,6 @@ struct MY_LIST{
         int next = node[target].next;
 
         pop_node_change(next, prev, target);
-    //    pos--;
     }
     int front(){
         return node[node[HEAD].next].data;
@@ -93,7 +91,9 @@ struct MY_LIST{
         return node[node[TAIL].prev].data;
     }
     int size(){
-        return pos;
+        int size = 0;
+        for(int i = node[HEAD].next ; i != TAIL ; i= node[i].next ) size++;
+        return size;
     }
 };
 
@@ -106,12 +106,14 @@ int main(){
         scanf("%d",&t);
         list.push_back(t);
     }
-    for(int i=0 ; i<n ; i++)list.pop_back();
-    for(int i=0 ; i<n ; i++){
+    for(int i=0 ; i<n-1 ; i++)list.pop_back();
+    printf("%d\n",list.size());
+    for(int i=0 ; i<2 ; i++){
         int t;
         scanf("%d",&t);
         list.push_back(t);
     }
+    printf("%d\n",list.size());
     for(int i = list.node[list.HEAD].next ; i !=list.TAIL  ; i=list.node[i].next){
         printf("%d ",list.node[i].data);
     }
