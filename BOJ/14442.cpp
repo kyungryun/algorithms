@@ -2,6 +2,7 @@
 #include <queue>
 using namespace std;
 
+const int INF = 987654321;
 int n,m,k;
 int block[1001][1001];
 int d[1001][1001][11];
@@ -38,14 +39,10 @@ int main(){
             }
         }
     }
-    int ans = -1;
+    int ans = INF;
     for(int i=0 ; i<=k ; i++){
         if(d[n-1][m-1][i] == 0) continue;
-        if(ans == -1){
-            ans = d[n-1][m-1][i];
-        }else{
-            ans = min(ans, d[n-1][m-1][i]);
-        }
+        ans = min(ans, d[n-1][m-1][i]);
     }
-    printf("%d\n",ans);
+    printf("%d\n",ans==INF ? -1 : ans);
 }

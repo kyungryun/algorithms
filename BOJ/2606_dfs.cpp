@@ -17,7 +17,6 @@ void dfs(int now){
     }
 }
 int main(){
-
     scanf("%d",&n);
     scanf("%d",&m);
     for(int i=0 ; i<n ; i++){
