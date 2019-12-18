@@ -1,18 +1,17 @@
-#include <string>
-#include <iostream>
+#include <cstdio>
 
 using namespace std;
 
 int an[26];
 int bn[26];
+char a[1001], b[1001];
 int cnt;
 int main(){
-    string a,b;
-    cin>>a>>b;
-    for(int i=0 ; i<a.size() ; i++){
+    scanf("%s%s",a,b);
+    for(int i=0 ; a[i] != 0 ; i++){
         an[a[i]-'a']++;
     }
-    for(int i=0 ; i<b.size() ; i++){
+    for(int i=0 ; b[i] != 0 ; i++){
         bn[b[i]-'a']++;
     }
     for(int i=0 ; i<26 ; i++){
@@ -20,5 +19,5 @@ int main(){
             cnt += abs(an[i] - bn[i]);
         }
     }
-    cout<<cnt<<"\n";
+    printf("%d\n",cnt);
 }
