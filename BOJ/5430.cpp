@@ -9,13 +9,13 @@ int main(){
     for(int t=0 ; t<T ; t++){
         char p[100001];
         char n[700001];
-        int tmp;
+        int tmp,i=0;
         deque<int> dq;
         scanf("%s",p);
         scanf("%d",&tmp);
         scanf("%s",n);
-        int i=0;
-        while(n[i] != '\0'){
+        
+        while(n[i] != 0){
             if(n[i] >= '0' && n[i] <= '9'){
                 int j=i;
                 int num = n[i]-'0';
@@ -28,10 +28,9 @@ int main(){
                 i = j;
             }else i++;
         }
-        i=0;
         int dir = 1;
         bool flag = true;
-        while(p[i] != '\0'){
+        for(int i=0 ; p[i] != 0 ; i++){
             if(p[i] == 'R'){
                 dir *= -1;
             }else{
@@ -42,7 +41,6 @@ int main(){
                 if(dir == 1) dq.pop_front();
                 else dq.pop_back();
             }
-            i++;
         }
         if(flag){
             printf("[");
