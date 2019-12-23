@@ -1,16 +1,16 @@
-#include <iostream>
+#include <cstdio>
 #include <stack>
-#include <string>
 using namespace std;
 
+long long ans;
+long long calc = 1;
 int main(){
-    string str;
-    stack<char> s;
-    long long ans = 0;
-    long long calc = 1;
+    char str[31];
     bool flag = true;
-    cin>>str;
-    for(int i=0;  i<str.size() ; i++){
+    stack<char> s;
+    
+    scanf("%s",str);
+    for(int i=0; str[i] != 0; i++){
         if(str[i] == '(' || str[i] == '['){
             if(str[i] == '(') calc *=2;
             else calc *= 3;
@@ -38,6 +38,6 @@ int main(){
         }
     }
     if(!s.empty()) flag = false;
-    if(flag) cout<<ans<<"\n";
-    else cout<<0<<"\n";
+    if(flag) printf("%lld\n",ans);
+    else printf("0\n");
 }
