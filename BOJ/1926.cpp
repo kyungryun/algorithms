@@ -1,15 +1,14 @@
 #include <cstdio>
 #include <vector>
 #include <queue>
-#include <cstring>
 using namespace std;
 
-int n,m;
+int n,m,ans;
 int map[501][501];
+bool visited[501][501];
 int dr[4] = {0,0,1,-1};
 int dc[4]  ={1,-1,0,0};
-bool visited[501][501];
-int ans;
+
 void bfs(int r, int c){
     queue<pair<int, int>> q;
     q.push(make_pair(r,c));
