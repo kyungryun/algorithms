@@ -30,7 +30,7 @@ int merge(int u, int v){
 bool comp(NODE a, NODE b){
     return a.w < b.w;
 }
-int ks(){
+int uf(){
     sort(edge.begin(), edge.end(), comp);
     int ans = 0;
     for(int i=0 ; i<edge.size() ; i++){
@@ -52,7 +52,7 @@ int main(){
             edge.push_back(NODE(a,b,1));
             edge.push_back(NODE(b,a,1));
         }
-        printf("%d\n",ks());
+        printf("%d\n",uf());
         memset(group, 0, sizeof(group));
         edge.clear();
     }

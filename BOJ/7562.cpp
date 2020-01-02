@@ -2,7 +2,6 @@
 #include <algorithm>
 #include <queue>
 #include <vector>
-#include <cstring>
 using namespace std;
 
 int t,l;
@@ -16,8 +15,11 @@ int main(){
     while(t--){
         scanf("%d",&l);
         scanf("%d%d%d%d",&sr,&sc,&er,&ec);
-        memset(map,0,sizeof(map));
-        memset(visited,false,sizeof(visited));
+        for(int i=0 ; i<301 ; i++){
+            for(int j=0 ; j<301 ; j++){
+                map[i][j] = 0, visited[i][j] = 0;
+            }
+        }
         queue<pair<int, int>> q;
         q.push(make_pair(sr,sc));
         visited[sr][sc] = true;
