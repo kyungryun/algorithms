@@ -2,7 +2,6 @@
 #include <vector>
 #include <algorithm>
 #include <queue>
-#include <cstring>
 using namespace std;
 
 int n,m;
@@ -13,7 +12,11 @@ int dr[4] = {0,0,1,-1};
 int dc[4] = {1,-1,0,0};
 int cluster(){
     int cnt = 0;
-    memset(visited, false, sizeof(visited));
+    for(int i=0 ; i<301 ; i++){
+        for(int j=0 ; j<301 ; j++){
+            visited[i][j] = 0;
+        }
+    }
     for(int i=1 ; i<n-1 ; i++){
         for(int j=1 ; j<m-1 ; j++){
             if(map[i][j] != 0 && !visited[i][j]){
