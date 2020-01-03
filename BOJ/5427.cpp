@@ -12,9 +12,9 @@ int sr,sc;
 int dr[4] = {0,0,1,-1};
 int dc[4] = {1,-1,0,0};
 int map[1002][1002];
-vector<pair<int, int>> fire;
-int bfs(){
-    bool visited[1002][1002];
+bool visited[1002][1002];
+
+int bfs(vector<pair<int, int>> &fire){
     memset(visited,false, sizeof(visited));
     queue<pair<pair<int, int>, pair<int, int>>> q;
     for(int i=0 ; i<fire.size() ; i++){
@@ -52,6 +52,7 @@ int main(){
     scanf("%d",&t);
 
     while(t--){
+        vector<pair<int, int>> fire;
         scanf("%d%d",&w,&h);
         for(int i=0 ; i<h ; i++){
             for(int j=0 ; j<w ; j++){
@@ -69,10 +70,9 @@ int main(){
                 }
             }
         }
-        int ans = bfs();
+        int ans = bfs(fire);
         if(ans) printf("%d\n",ans);
         else printf("IMPOSSIBLE\n");
-        fire.clear();
         memset(map,0,sizeof(map));
     }
 }
