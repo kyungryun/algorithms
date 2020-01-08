@@ -2,7 +2,6 @@
 #include <stack>
 #include <algorithm>
 #include <deque>
-#include <cstring>
 using namespace std;
 int n,k;
 int ans = 987654321;
