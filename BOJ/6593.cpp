@@ -37,6 +37,7 @@ int bfs(int sh, int sr, int sc){
 int main(){
     while(1){
         int sr,sc,sh,er,ec,eh;
+        sr = sc = sh = er = ec = eh = 0;
         memset(visited, false, sizeof(visited));
         scanf("%d%d%d",&L,&R,&C);
         if(L == 0 && R == 0 && C == 0) break;
