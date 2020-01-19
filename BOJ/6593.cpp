@@ -28,7 +28,7 @@ int bfs(int sh, int sr, int sc){
                 if(d[nh][nr][nc] == 0 && !visited[nh][nr][nc]){
                     d[nh][nr][nc] = d[h][r][c] + 1;
                     visited[nh][nr][nc] = true;
-                    q.push(make_pair(nh,make_pair(nr,nc)));
+                    q.push(make_pair(nh,make_pair(nr,nc))); 
                 }
             }
         }
