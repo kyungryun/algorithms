@@ -16,5 +16,8 @@ int solution(vector<vector<int>> triangle) {
             else dp[i][j] = triangle[i][j] + max(dp[i-1][j-1], dp[i-1][j]);
         }
     }
+    for(int i=0 ; i<h ; i++){
+        answer = max(answer, dp[h-1][i]);
+    }
     return answer;
 }
