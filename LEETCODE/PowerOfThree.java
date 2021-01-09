@@ -6,4 +6,9 @@ public class PowerOfThree {
         }
         return n == 1;
     }
+    
+    public boolean isPowerOfThree2(int n){
+        double ans = Math.log10(n) / Math.log10(3);
+        return (int) ans == ans;
+    }
 }
